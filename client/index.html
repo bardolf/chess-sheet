@@ -2,13 +2,25 @@
 <html>
 
 <head>
-    <style lang="scss"> @import 'node_modules/handsontable/dist/handsontable.full.min.css';</style>
+    <style lang="scss">
+        @import 'node_modules/handsontable/dist/handsontable.full.min.css';
+    </style>
+    <style>
+        body {
+            margin: 20px 30px;
+            font-size: 12px;
+            font-family: 'Open Sans', Helvetica, Arial;
+        }
+        .handsontable .yellow {
+            background: yellow;
+        }
+        </style>
     <meta charset="utf-8">
     <title>React App Setup</title>
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="hot"></div>
 </body>
 
 </html>
