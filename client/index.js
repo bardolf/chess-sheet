@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from './components/App.jsx';
+import AppContainer from './components/app.jsx';
 import { createStore} from 'redux'
 import reducers from './reducers';
 import { Provider } from 'react-redux'; 
@@ -9,7 +9,7 @@ const store = createStore(reducers);
 
 ReactDOM.render(  
     <Provider store={store}>
-      <AppContainer />
+      <AppContainer />      
     </Provider>,
     document.getElementById('hot')
   );
