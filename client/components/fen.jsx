@@ -8,14 +8,13 @@ class Fen extends React.Component {
 
   render() {
     return (
-      <div>{this.props.fen} ({this.props.error})</div>
+      <div>{this.props.fen}</div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  fen: state.fen,  
-  error: state.error,  
+  fen: state.fen,    
 });
 
 const mapDispatchToProps = {

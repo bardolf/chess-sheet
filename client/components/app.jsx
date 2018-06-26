@@ -1,6 +1,5 @@
 import React from 'react';
 import GridContainer from './grid.jsx';
-import FenContainer from './fen.jsx';
 import ChessboardContainer from './chessboard.jsx';
 
 export default class App extends React.Component {
@@ -10,10 +9,15 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <FenContainer/>
-                <GridContainer/>
-                <ChessboardContainer/>
+            <div class="table-responsive-sm">
+                <table>                    
+                    <tbody>
+                        <tr>                            
+                            <td valign="top"><GridContainer/></td>
+                            <td><ChessboardContainer/></td>                            
+                        </tr>                                                
+                    </tbody>
+                </table>
             </div>
         );
     }

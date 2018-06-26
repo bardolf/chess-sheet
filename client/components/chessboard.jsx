@@ -10,7 +10,11 @@ class Chessboard extends React.Component {
 
   render() {
     return (
-      <Chessground fen={this.props.fen}/>
+      <div>
+        <Chessground fen={this.props.fen} draggable={{enabled:false}} viewOnly={true} resizable={true}/>
+        <div>&nbsp;</div>
+        <div>{this.props.fen}</div>
+      </div>
     );
   }
 }

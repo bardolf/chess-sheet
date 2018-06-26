@@ -1,6 +1,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
   filename: 'index.html',
@@ -34,5 +35,15 @@ module.exports = {
             }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig]
+    plugins: [
+        HtmlWebpackPluginConfig,
+        new CompressionPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
+            threshold: 10240,
+            minRatio: 0.8
+        })
+    
+    ]
 }

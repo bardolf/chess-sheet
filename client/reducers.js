@@ -4,7 +4,8 @@ const reducers = (state = [], action) => {
     switch (action.type) {
         case 'CHANGE':
             var analValues = analyze(action.data);
-            var newState = {data: action.data, fen: analValues.fen, error: analValues.error };      
+            var newState = {data: action.data, fen: analValues.fen, pgn: analValues.pgn, error: analValues.errorMsg };      
+            debugger;
             return newState;
         default:
             return state;
@@ -41,12 +42,11 @@ const analyze = data => {
                 //last move empty -> valid move
             } 
             else {
-                return {fen: chess.fen(), error: 'Invalid move #'+(row+1)} 
+                return {fen: chess.fen(), pgn: chess.pgn(), errorMsg: 'Neplatný tah #'+(row+1)} 
             }
-    
         }        
     }
-    return {fen: chess.fen(), error: ''};
+    return {fen: chess.fen(), pgn: chess.pgn(), errorMsg: ''};
 }
 
 export default reducers;
