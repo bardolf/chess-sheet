@@ -1,40 +1,37 @@
 import React from 'react';
 import { HotTable } from '@handsontable/react';
 import { connect } from 'react-redux'
-import { onAfterChange } from '../actions';
-import Handsontable from 'handsontable';
+import { onAfterGridChange } from '../actions';
 
 class Grid extends React.Component {
   constructor() {
     super();
-    this.data = [['e4','e5'],['Nf3','Nf6']];
+    // this.data = [['e4', 'e5'], ['jf3', 'jc6'], ['sc4', 'sc5'], ['d3', 'h6'], ['o-o', 'jf6'], ['c3', 'sb6'], ['a4', 'a6'], ['sd2', 'o-o']];
+    this.afterChange = this.afterChange.bind(this);
+  }
+
+  afterChange() {
+    this.props.onAfterGridChange(this.props.data);
   }
 
   render() {
     return (
       <div id="grid">
-        <HotTable id="my-hot" settings={{
-          data: this.data,
+        <HotTable id="hot" afterChange={this.afterChange} data={this.props.data} settings={{          
           colHeaders: true,
           rowHeaders: true,
           allowInsertColumn: false,
           colHeaders: ['Bílý', 'Černý'],
-          contextMenu: ['row_above', 'row_below'],
+          contextMenu: ['row_above', 'row_below', 'remove_row'],
           width: 200,
           maxCols: 2,
           minCols: 2,
           minRows: 1,
           minSpareRows: 1,
           startRows: 1,
-          onAfterChange: (changes, source) => {
-            this.props.onAfterChange(this.data)          
-          },          
         }} />
       </div>
     );
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
   }
 }
 
@@ -44,7 +41,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  onAfterChange,
+  onAfterGridChange,
 };
 
 const GridContainer = connect(

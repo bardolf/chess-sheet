@@ -1,4 +1,4 @@
-export const onAfterChange = (data) => ({
-  type: 'CHANGE',
+export const onAfterGridChange = (data) => ({
+  type: 'GRID_CHANGE',
   data,  
 });

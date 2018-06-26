@@ -16,6 +16,7 @@
     "react": "^16.4.1",
     "react-chessboardjs": "^0.5.3",
     "react-chessground": "^1.0.0",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
