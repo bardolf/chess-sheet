@@ -7,7 +7,7 @@ import Handsontable from 'handsontable';
 class Grid extends React.Component {
   constructor() {
     super();
-    this.data = Handsontable.helper.createEmptySpreadsheetData(1, 2);    
+    this.data = [['e4','e5'],['Nf3','Nf6']];
   }
 
   render() {
