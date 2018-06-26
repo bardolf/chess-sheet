@@ -11,8 +11,8 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div class="table-responsive">
-                <table cellpadding="10">                    
+            <div className="table-responsive">
+                <table cellPadding="10">                    
                     <tbody>
                         <tr>                            
                             <td valign="top">

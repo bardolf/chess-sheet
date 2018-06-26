@@ -10,7 +10,7 @@ class Pgn extends React.Component {
     return (
       <div>
         <div>PGN</div>
-        <textarea value={this.props.pgn} cols={40} rows={20}></textarea>
+        <textarea readOnly value={this.props.pgn} cols={40} rows={20}></textarea>
       </div>
     );
   }

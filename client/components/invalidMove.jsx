@@ -8,7 +8,7 @@ class InvalidMove extends React.Component {
 
   render() {
     return (
-      <div class="text-danger">{this.props.error}</div>
+      <div className="text-danger">{this.props.error}</div>
     );
   }
 }
