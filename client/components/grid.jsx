@@ -47,6 +47,7 @@ class Grid extends React.Component {
             colHeaders: ['Bílý', 'Černý'],
             contextMenu: ['row_above', 'row_below', 'remove_row'],
             width: 200,
+            height: 500,
             maxCols: 2,
             minCols: 2,
             minRows: 1,

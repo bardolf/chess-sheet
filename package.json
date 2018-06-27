@@ -10,7 +10,7 @@
   "dependencies": {
     "@handsontable/react": "^1.0.0",
     "bootstrap": "^4.1.1",
-    "chess.js": "^0.10.2",
+    "chess.js": "^0.10.2",    
     "handsontable": "^4.0.0",
     "path": "^0.12.7",
     "react": "^16.4.1",

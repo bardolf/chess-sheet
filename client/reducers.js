@@ -1,36 +1,27 @@
 import Chess from 'chess.js'
+import {example} from './examples';
 
-const reducers = (state = { data: [[]], fen: '', pgn: '', error: '', invalidMove: null }, action) => {
+const INITIAL_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+
+const reducers = (state = { data: [[]], fen: INITIAL_FEN, pgn: '', error: '', invalidMove: null }, action) => {
     switch (action.type) {
         case 'GRID_CHANGE':
-            if (action.data) {
-                var analValues = analyze(action.data);
-                var newState = { data: action.data, fen: analValues.fen, pgn: analValues.pgn, error: analValues.errorMsg, invalidMove: analValues.invalidMove };
-                return newState;
-            } 
+            if (action.data) {                
+                return getNewState(action.data);
+            }
             return state;
+        case 'RESET':
+            return getNewState([[]]);
+        case 'EXAMPLE':
+            return getNewState(example());
         default:
             return state;
     }
 }
 
-const highlightedCells = data => {
-    var chess = new Chess();
-    var result = [];
-    for (var row = 0; row < data.length; row++) {
-        var resultRow = [];
-        for (var col = 0; col < data[row].length; col++) {
-            var move = data[row][col];
-            if (move != null && chess.move(move) != null) {
-                resultRow.push(1);
-            }
-            else {
-                resultRow.push(0);
-            }
-        }
-        result.push(resultRow);
-    }
-    return result;
+const getNewState = data => {
+    var analValues = analyze(data);
+    return { data: data, fen: analValues.fen, pgn: analValues.pgn, error: analValues.errorMsg, invalidMove: analValues.invalidMove };
 }
 
 const analyze = data => {
@@ -62,7 +53,7 @@ const analyze = data => {
             }
         }
     }
-    return { fen: chess.fen(), pgn: chess.pgn(), errorMsg: errorConfirmed ? errorMessage : '', invalidMove: errorConfirmed ? invalidMove : null};
+    return { fen: chess.fen(), pgn: chess.pgn(), errorMsg: errorConfirmed ? errorMessage : '', invalidMove: errorConfirmed ? invalidMove : null };
 }
 
 const errorMessageText = (row, col) => {
@@ -81,7 +72,7 @@ const czech2English = move => {
         move = move.replace(/^[dD]/, "Q");
     }
     move = move.replace(/^[oO]-[oO]$/, "O-O");
-    move = move.replace(/^[oO]-[oO]-[oO]$/, "O-O-O");        
+    move = move.replace(/^[oO]-[oO]-[oO]$/, "O-O-O");
 
     if (/^.8[jJsSvVdD]$/.test(move)) {
         move = move.replace(/[jJ]$/, "N");

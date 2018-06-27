@@ -2,7 +2,6 @@ import React from 'react';
 import GridContainer from './grid.jsx';
 import ChessboardContainer from './chessboard.jsx';
 import PgnContainer from './pgn.jsx';
-import InvalidMoveContainer from './invalidMove.jsx';
 
 export default class App extends React.Component {
     constructor() {
