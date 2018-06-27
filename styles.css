@@ -1,0 +1,13 @@
+@import '~handsontable/dist/handsontable.full.min.css';
+@import '~react-chessground/dist/styles/chessground.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    margin: 20px 30px;
+    font-size: 12px;
+    font-family: 'Open Sans', Helvetica, Arial;
+}
+
+.handsontable th {                    
+    font-weight: bold;
+}

@@ -13,7 +13,7 @@ const reducers = (state = { data: [[]], fen: INITIAL_FEN, pgn: '', error: '', in
         case 'RESET':
             return getNewState([[]]);
         case 'EXAMPLE':
-            return getNewState(example());
+            return getNewState(example());      
         default:
             return state;
     }
@@ -65,11 +65,12 @@ const czech2English = move => {
         return move;
     }
     //transform czech notation to english one - pieces moves
-    if (/^[jJsSvVdD].\d$/.test(move) || /^[jJsSvVdD]..\d$/.test(move)) {
+    if (/^[jJsSvVdDk].\d$/.test(move) || /^[jJsSvVdDk]..\d$/.test(move)) {
         move = move.replace(/^[jJ]/, "N");
         move = move.replace(/^[sS]/, "B");
         move = move.replace(/^[vV]/, "R");
         move = move.replace(/^[dD]/, "Q");
+        move = move.replace(/^[k]/, "K");
     }
     move = move.replace(/^[oO]-[oO]$/, "O-O");
     move = move.replace(/^[oO]-[oO]-[oO]$/, "O-O-O");
@@ -78,7 +79,7 @@ const czech2English = move => {
         move = move.replace(/[jJ]$/, "N");
         move = move.replace(/[sS]$/, "B");
         move = move.replace(/[vV]$/, "R");
-        move = move.replace(/[dD]$/, "Q");
+        move = move.replace(/[dD]$/, "Q");        
     }
     return move;
 }

@@ -6,8 +6,7 @@ import Handsontable from 'handsontable';
 
 class Grid extends React.Component {
   constructor() {
-    super();
-    // this.data = [['e4', 'e5'], ['jf3', 'jc6'], ['sc4', 'sc5'], ['d3', 'h6'], ['o-o', 'jf6'], ['c3', 'sb6'], ['a4', 'a6'], ['sd2', 'o-o']];
+    super();    
     this.afterChange = this.afterChange.bind(this);
     this.cells = this.cells.bind(this);
     this.invalidMoveValueRenderer = this.invalidMoveValueRenderer.bind(this);
@@ -39,7 +38,7 @@ class Grid extends React.Component {
   render() {
     return (
       <div id="grid">
-        <HotTable id="hot" afterChange={this.afterChange} data={this.props.data} cells={this.cells}
+        <HotTable id="hot" afterChange={this.afterChange} data={this.props.data} cells={this.cells} 
           settings={{
             colHeaders: true,
             rowHeaders: true,

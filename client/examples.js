@@ -1,7 +1,7 @@
-const EXAMPLE1 = [['e4','e5'],['Nf3','Nc6'],['Bc4','Nf6'],['Ng5','Bc5'],['Nxf7','Bxf2'],['Ke2','Nd4'],
-    ['Kd3','b5'],['Bb3','Nxe4'],['Nxd8','Nc5+'],['Kc3','Ne2'],
-    ['Qxe2','Bd4'],['Kb4','a5'],['Kxb5','Ba6'],['Kxa5','Bd3'],
-    ['Kb4','Na6'],['Ka4','Nb4'],['Kxb4','c5']];
+const EXAMPLE1 = [['e4','e5'],['jf3','jc6'],['sc4','jf6'],['jg5','sc5'],['jxf7','sxf2'],['ke2','jd4'],
+    ['kd3','b5'],['sb3','jxe4'],['jxd8','jc5'],['kc3','je2'],
+    ['dxe2','sd4'],['kb4','a5'],['kxb5','sa6'],['kxa5','sd3'],
+    ['kb4','ja6'],['ka4','jb4'],['kxb4','c5']];
 
 export const example = () => {
     return EXAMPLE1;

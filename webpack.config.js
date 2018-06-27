@@ -3,13 +3,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './client/index.html',
-  filename: 'index.html',
-  inject: 'body'
+    template: './client/index.html',
+    filename: 'index.html',
+    inject: 'body'
 });
 
 module.exports = {
-    mode: 'development',
     entry: './client/index.js',
     output: {
         path: path.resolve('dist'),
@@ -32,6 +31,12 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: "babel-loader"
+            },            
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    'file-loader?name=images/[name].[ext]',
+                ]
             }
         ]
     },
@@ -44,6 +49,6 @@ module.exports = {
             threshold: 10240,
             minRatio: 0.8
         })
-    
+
     ]
 }
