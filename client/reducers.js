@@ -1,11 +1,11 @@
 import Chess from 'chess.js'
 
-const reducers = (state = { data: [[]], fen: '', pgn: '', error: '' }, action) => {
+const reducers = (state = { data: [[]], fen: '', pgn: '', error: '', invalidMove: null }, action) => {
     switch (action.type) {
         case 'GRID_CHANGE':
             if (action.data) {
                 var analValues = analyze(action.data);
-                var newState = { data: action.data, fen: analValues.fen, pgn: analValues.pgn, error: analValues.errorMsg };
+                var newState = { data: action.data, fen: analValues.fen, pgn: analValues.pgn, error: analValues.errorMsg, invalidMove: analValues.invalidMove };
                 return newState;
             } 
             return state;
@@ -35,34 +35,37 @@ const highlightedCells = data => {
 
 const analyze = data => {
     var chess = new Chess();
+    var errorMessage = null;
+    var errorConfirmed = false;
     var invalidMove = null;
-    var invalidMoveConfirmed = false;
     for (var row = 0; row < data.length; row++) {
         for (var col = 0; col < data[row].length; col++) {
             var move = data[row][col];
             move = czech2English(move);
-            if (invalidMove !== null) {
-                if (!invalidMoveConfirmed && (move !== null && move.trim().length != 0)) {
-                    invalidMoveConfirmed = true;
+            if (errorMessage !== null) {
+                if (!errorConfirmed && (move !== null && move.trim().length != 0)) {
+                    errorConfirmed = true;
                 }
                 continue;
             }
 
             if (move === null || move.trim().length == 0) {
-                invalidMove = errorMessage(row, col);
+                errorMessage = errorMessageText(row, col);
+                invalidMove = [row, col];
                 continue;
             }
 
             if (chess.move(move) == null) {
-                invalidMove = errorMessage(row, col);
-                invalidMoveConfirmed = true;
+                errorMessage = errorMessageText(row, col);
+                invalidMove = [row, col];
+                errorConfirmed = true;
             }
         }
     }
-    return { fen: chess.fen(), pgn: chess.pgn(), errorMsg: invalidMoveConfirmed ? invalidMove : '' };
+    return { fen: chess.fen(), pgn: chess.pgn(), errorMsg: errorConfirmed ? errorMessage : '', invalidMove: errorConfirmed ? invalidMove : null};
 }
 
-const errorMessage = (row, col) => {
+const errorMessageText = (row, col) => {
     return 'Neplatný ' + (row + 1) + '. tah ' + (col == 0 ? 'bílého' : 'černého');
 }
 
