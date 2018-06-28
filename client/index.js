@@ -6,7 +6,7 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { loadState, saveState } from './localStorage';
 
-import '../styles.css';
+import './styles.css';
 
 const persistedState = loadState();
 const store = createStore(
