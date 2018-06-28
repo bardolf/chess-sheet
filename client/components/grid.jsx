@@ -52,6 +52,7 @@ class Grid extends React.Component {
                         minRows: 1,
                         minSpareRows: 1,
                         startRows: 1,
+                        stretchH: 'all',
                     }} />
             </div>
         );

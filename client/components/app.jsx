@@ -14,7 +14,10 @@ export default class App extends React.Component {
                 <table cellPadding="10">
                     <tbody>
                         <tr>
-                            <td valign="top"><GridContainer /></td>
+                            <td valign="top">
+                                <a href="https://gitlab.com/bardolf/chess-sheet/blob/master/README.md">Nápověda/Help</a>
+                                <GridContainer />
+                            </td>
                             <td valign="top"><ChessboardContainer /></td>
                             <td valign="top"><PgnContainer /></td>
                         </tr>
