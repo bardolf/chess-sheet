@@ -1,19 +1,19 @@
 import Chess from 'chess.js'
-import {example} from './examples';
+import { example } from './examples';
 
 const INITIAL_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
 const reducers = (state = { data: [[]], fen: INITIAL_FEN, pgn: '', error: '', invalidMove: null }, action) => {
     switch (action.type) {
         case 'GRID_CHANGE':
-            if (action.data) {                
+            if (action.data) {
                 return getNewState(action.data);
             }
             return state;
         case 'RESET':
             return getNewState([[]]);
         case 'EXAMPLE':
-            return getNewState(example());      
+            return getNewState(example());
         default:
             return state;
     }
@@ -79,7 +79,7 @@ const czech2English = move => {
         move = move.replace(/[jJ]$/, "N");
         move = move.replace(/[sS]$/, "B");
         move = move.replace(/[vV]$/, "R");
-        move = move.replace(/[dD]$/, "Q");        
+        move = move.replace(/[dD]$/, "Q");
     }
     return move;
 }

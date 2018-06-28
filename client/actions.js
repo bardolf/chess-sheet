@@ -1,12 +1,12 @@
 export const onAfterGridChange = (data) => ({
-  type: 'GRID_CHANGE',
-  data,  
+    type: 'GRID_CHANGE',
+    data,
 });
 
 export const onReset = () => ({
-  type: 'RESET'  
+    type: 'RESET'
 });
 
 export const onExample = () => ({
-  type: 'EXAMPLE'  
+    type: 'EXAMPLE'
 });
