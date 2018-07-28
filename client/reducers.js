@@ -104,7 +104,8 @@ const czech2English = (move, chess) => {
     move = move.replace(/^[oO]-[oO]$/, "O-O");
     move = move.replace(/^[oO]-[oO]-[oO]$/, "O-O-O");
 
-    if (/^.8[jJsSvVdD]$/.test(move)) {
+    //promotion
+    if (/^.([x].){0,1}8[=]{0,1}[jJsSvVdD]$/.test(move) || /^.([x].){0,1}1[=]{0,1}[jJsSvVdD]$/.test(move)) {
         move = move.replace(/[jJ]$/, "N");
         move = move.replace(/[sS]$/, "B");
         move = move.replace(/[vV]$/, "R");
