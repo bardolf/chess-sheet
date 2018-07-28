@@ -2,12 +2,14 @@ import React from 'react';
 import { HotTable } from '@handsontable/react';
 import { connect } from 'react-redux'
 import { onAfterGridChange } from '../actions';
+import { onAfterGridSelection } from '../actions';
 import Handsontable from 'handsontable';
 
 class Grid extends React.Component {
     constructor() {
         super();
         this.afterChange = this.afterChange.bind(this);
+        this.afterSelectionEnd = this.afterSelectionEnd.bind(this);
         this.cells = this.cells.bind(this);
         this.invalidMoveValueRenderer = this.invalidMoveValueRenderer.bind(this);
         Handsontable.renderers.registerRenderer('invalidMoveValueRenderer', this.invalidMoveValueRenderer);
@@ -18,6 +20,10 @@ class Grid extends React.Component {
             return; //don't do anything as this is called when table is loaded
         }
         this.props.onAfterGridChange(this.props.data);
+    }
+
+    afterSelectionEnd(row, col, row2, col2) {        
+        this.props.onAfterGridSelection(row, col);
     }
 
     invalidMoveValueRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -38,7 +44,10 @@ class Grid extends React.Component {
     render() {
         return (
             <div id="grid">
-                <HotTable id="hot" afterChange={this.afterChange} data={this.props.data} cells={this.cells}
+                <HotTable id="hot" afterChange={this.afterChange} 
+                    afterSelectionEnd={this.afterSelectionEnd}
+                    data={this.props.data} 
+                    cells={this.cells}
                     settings={{
                         colHeaders: true,
                         rowHeaders: true,
@@ -66,6 +75,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
     onAfterGridChange,
+    onAfterGridSelection,
 };
 
 const GridContainer = connect(

@@ -3,6 +3,10 @@ export const onAfterGridChange = (data) => ({
     data,
 });
 
+export const onAfterGridSelection = (row, col) => ({
+    type: 'GRID_SELECTION', row, col
+});
+
 export const onReset = () => ({
     type: 'RESET'
 });

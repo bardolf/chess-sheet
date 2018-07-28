@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Chessground from 'react-chessground'
 
-
 class Chessboard extends React.Component {
     constructor() {
         super();
@@ -11,9 +10,9 @@ class Chessboard extends React.Component {
     render() {
         return (
             <div>
-                <Chessground fen={this.props.fen} draggable={{ enabled: false }} viewOnly={true} resizable={true} />
+                <Chessground fen={this.props.partialFen} draggable={{ enabled: false }} viewOnly={true} resizable={true} />
                 <div>&nbsp;</div>
-                <div>{this.props.fen}</div>
+                <div>{this.props.fen}</div>                
             </div>
         );
     }
@@ -21,6 +20,7 @@ class Chessboard extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     fen: state.fen,
+    partialFen: state.partialFen,
 });
 
 const mapDispatchToProps = {
